@@ -6,34 +6,36 @@ var verified = password_is_okay.password_is_okay;
 
 
 
-it('password should be longer than eight characters', function(){
-
- 
- expect(function(){passed('heights')}).toThrow(new Error('password should be more than eight characters'));
- });
-
-it('should not be null', function(){
-
-    expect(function(){passed("")}).toThrow(new Error('please enter password'));
-
+describe("Password Checker", function() {
+  
+it("should check password is not null", function() {
+      expect(function () {
+        passed("")}).toThrow(new Error("password should not be empty"))    
 });
-
-it('should have atleast one uppercase letter', function(){
-
-    expect(function(){passed("denims")}).toThrow(new Error('password should contain atleast one Uppercase character'));
-
- });
-
-it('should have atleast one lowercase letter', function(){
-    
-    expect(function() {passed('TODAY')}).toThrow(new Error("password should have atleast one lowercase letter"));
+  
+it("should check password has atleast one Uppercase letter ", function() {
+      expect(function () {
+        passed("r")}).toThrow(new Error("password should contain atleast one Uppercase character"))    
 });
-
-it('should have atleast one number', function(){
-
-    expect(function() {passed('stoker6fire')}).toThrow(new Error("password should contain atleast one number"));
+  
+it("should check password has atleast one lowercase letter", function() {
+      expect(function () {
+        passed("K")}).toThrow(new Error("password should contain atleast one lowercase character"))    
 });
+  
+it("should check password has atleast one number", function() {
+      expect(function () {
+        passed("kS")}).toThrow(new Error("password should contain atleast one number"))
+});
+  
+it("should check password has more than 8 characters", function() {
+      expect(function () {
+        passed("kK1")}).toThrow(new Error("password should be more than eight characters"))
+});  
+  
 it('meets three of password given criteria', function(){
 
-    expect(verified('Typo69Gravy').toBe(true));
+    expect(verified('Typo69gravy').toBe(true));
 })
+
+});

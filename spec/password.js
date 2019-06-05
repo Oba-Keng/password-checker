@@ -3,26 +3,30 @@ function password_is_valid(password){
 
 
     
-    var password;
-
-    
+  const upperCase = /[A-Z]/;
+  const lowerCase = /[a-z]/;
+  const number = /[0-9]/;
 
 //to check if a password strength is competent
-try {
+// try {
 
     
    
 
-        if(password < 8) throw new Error('password should be more than eight characters');
-        
-        if (password=="") throw new Error("enter password");
+if (password == "") 
+    throw new Error("password should not be empty");
 
-        if (!/[A-Z]/.test(password)) throw new Error('password should contain atleast one Uppercase character');
+if (!upperCase.test(password))
+    throw new Error("password should contain atleast one Uppercase character");
 
-        if(!/[a-z]/.test(password)) throw new Error('password should have atleast one lowercase letter');  
-        
-        if(!/[0-9]/.test(password)) throw new Error ('password should contain atleast one number');
-        
+if (!lowerCase.test(password))
+    throw new Error("password should contain atleast one lowercase character");
+
+if (!number.test(password))
+    throw new Error("password should contain atleast one number");
+  
+if (password.length < 8)
+    throw new Error("password should be more than eight characters");
 
         
         
@@ -31,18 +35,20 @@ try {
     
 
    
-} catch (error) {
-    console.log('caught', error)
-}
+// } catch (error) {
+//     console.log('caught', error)
+// }
 
     
     
 
 }
+
 function password_is_okay(password){
+
    var passer = new password_is_valid();
 
-    if(password >= 8&&!password.match(/[A-Z]/)&&password.match(/[0-9]/)){
+    if(password.length < 8&&!upperCase.test(password)&&!number.test(password)){
         return true;
     }else{
         return false;
@@ -57,5 +63,5 @@ module.exports =   {
 
 }
 
-password_is_valid('tOdayawayplay1');
-password_is_okay('Toni6ghTa');
+// password_is_valid('Todayawayplay1');
+// password_is_okay('Toni6ghTa');
