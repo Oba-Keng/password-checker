@@ -25,23 +25,17 @@ function password_is_valid(password) {
 }
 //checks three different password requirements and returns true if stleast three are met
 function password_is_okay(password) {
-  var passer = new password_is_valid();
-
+  let appropiate = true;
   if (
-    password.length < 8 &&
-    !upperCase.test(this.password) &&
-    !number.test(this.password)
+    this.password.length > 8 &&
+    upperCase.test(this.password) &&
+    number.test(this.password)
   ) {
-    return true;
+    return appropiate;
   } else {
     return false;
   }
 }
-
-module.exports = {
-  password_is_valid: password_is_valid,
-  password_is_okay: password_is_okay
-};
-
+(module.exports = password_is_valid), password_is_okay;
 // password_is_valid('Todayawayplay1');
 // password_is_okay('Toni6ghTa');
