@@ -46,6 +46,8 @@ class PasswordChecker {
       this.number.test(password)
     ) {
       return true;
+    } else {
+      return "password is not okay";
     }
   }
 }
