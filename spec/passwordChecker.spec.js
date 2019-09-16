@@ -44,4 +44,8 @@ describe("A Password Checker", function() {
     let validator = new PasswordChecker();
     expect(validator.password_is_okay("Greatwh1te")).toBe(true);
   });
+  it("password is never okay if first two conditions are not met", function() {
+    let validator = new PasswordChecker();
+    expect(validator.password_is_okay("Ghg1whity")).toBe(true);
+  });
 });

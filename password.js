@@ -33,6 +33,10 @@ class PasswordChecker {
 
   //checks three different password requirements and returns true if stleast three are met
   password_is_okay(password) {
+    if (password.length < 8 || password == "") {
+      return "password is not okay";
+    }
+
     if (
       password.length >= 8 &&
       this.upperCase.test(password) &&
@@ -42,15 +46,16 @@ class PasswordChecker {
 
     if (
       this.lowerCase.test(password) &&
-      password == "" &&
+      password != "" &&
       this.number.test(password)
     ) {
       return true;
     } else {
-      return "password is not okay";
+      return false;
     }
   }
 }
+
 module.exports = PasswordChecker;
 
 // password_is_valid('Todayawayplay1');
